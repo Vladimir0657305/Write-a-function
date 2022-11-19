@@ -156,3 +156,34 @@ function findOutlier(integers) {
 //     -169412445, -144419569, 34349617,
 //     115499046
 // ]);
+
+// Write a function that will return the count of distinct case-insensitive alphabetic characters
+function duplicateCount(text) {
+    let arr = {};
+    let letters = '';
+    letters = text.split('');
+    console.log(letters);
+    for (let i = 0; i < letters.length; i++) {
+        for (let k = i; k < letters.length; k++) {
+            console.log(arr[letters[i].toLowerCase()])
+            if (letters[i].toLowerCase() == letters[k].toLowerCase()) {
+                if (!arr[letters[i].toLowerCase()]) { 
+                    arr[letters[i].toLowerCase()]= 1;
+                }
+                else {
+                    arr[letters[i].toLowerCase()]= 2;
+                } 
+            }
+        }
+    }
+    let count = 0;
+    Object.values(arr).forEach(elem => {elem == 2 ? count++ : false});
+    console.log(count);
+    return(count);
+}
+// return (text.toLowerCase().split('').sort().join('').match(/([^])\1+/g) || []).length;
+// ==============================
+// return new Set(text.toLowerCase().match(/(.)(?=.*\1)/gi)).size
+
+// duplicateCount("Indivisibilities");
+
