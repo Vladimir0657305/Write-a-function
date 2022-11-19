@@ -69,3 +69,33 @@ function digitalRoot(n) {
 // =================================
 // digitalRoot(298203);
 
+// function which takes an array containing the names of people that like an item.
+function likes(names) {
+    switch(names.length) {
+        case 0 :
+            console.log("no one likes this");
+            return ("no one likes this");
+        case 1 :
+            console.log(`"${names[0]} likes this"`);
+            return (`"${names[0]} likes this"`);
+        case 2 :
+            console.log(`"${names[0]} and ${names[1]} like this"`);
+            return (`"${names[0]} and ${names[1]} like this"`);
+        case 3 :
+            console.log(`"${names[0]}, ${names[1]} and ${names[2]} like this"`);
+            return (`"${names[0]}, ${names[1]} and ${names[2]} like this"`);
+        default :
+            console.log(`"${names[0]}, ${names[1]} and ${names.length - 2} others like this"`);
+            return (`"${names[0]}, ${names[1]} and ${names.length - 2} others like this"`);
+    }
+}
+// return {
+//     0: 'no one likes this',
+//     1: `${names[0]} likes this`,
+//     2: `${names[0]} and ${names[1]} like this`,
+//     3: `${names[0]}, ${names[1]} and ${names[2]} like this`,
+//     4: `${names[0]}, ${names[1]} and ${names.length - 2} others like this`,
+// }[Math.min(4, names.length)]
+// ============================================
+
+// likes(['Alex', 'Jacob', 'Mark', 'Max']);
