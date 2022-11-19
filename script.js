@@ -99,3 +99,60 @@ function likes(names) {
 // ============================================
 
 // likes(['Alex', 'Jacob', 'Mark', 'Max']);
+
+// Write a method that takes the array as an argument and returns this "outlier" N.
+function findOutlier(integers) {
+    let countOdd = 0;
+    let countEven = 0;
+    for (let i = 0; i < 3; i++) {
+        if (Math.abs(integers[i]) %2 == 0) {
+            countEven++;
+        }
+        else {
+            countOdd++;
+        }
+    }
+    if (countEven > countOdd) {
+        for (let i = 0; i < integers.length; i++) {
+            if (integers[i] % 2 != 0) console.log(integers[i]);
+        }
+        // integers.forEach(elem => {if(elem%2 != 0) console.log(elem)});
+        // integers.some(elem => {
+        //     if (elem % 2 != 0) {
+        //         console.log(elem); 
+        //         return (elem);
+        //     }
+        // });
+    }
+    else {
+        for (let i = 0; i < integers.length; i++) {
+            if (integers[i] % 2 == 0) console.log(integers[i]);
+        }
+        // integers.forEach(elem => { if (elem % 2 == 0) console.log(elem)});
+        // integers.some(elem => { 
+        //     if (elem % 2 == 0) {
+        //         console.log(elem); 
+        //         return (elem);
+        //     }
+        // });
+    }
+}
+// const even = integers.filter(int => int % 2 === 0);
+// const odd = integers.filter(int => int % 2 !== 0);
+// return even.length === 1 ? even[0] : odd[0];
+// =============================
+// return ints.slice(0, 3).reduce((a, b) => b % 2 === 0 ? a : a + 1, 0) >= 2 ?
+//     ints.find(i => i % 2 === 0) : ints.find(i => i % 2 !== 0);
+// =============================
+
+// findOutlier([
+//     97448739, -70307539, 74282899,
+//     39892693, 180894747, 162641409,
+//     -70810875, 141270229, 121097961,
+//     -184784073, 161635979, -93606059,
+//     197748443, 136438391, -106201977,
+//     -165619227, 149589075, 182225049,
+//     55514649, 99671457, -125250663,
+//     -169412445, -144419569, 34349617,
+//     115499046
+// ]);
