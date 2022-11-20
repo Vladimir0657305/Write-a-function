@@ -218,3 +218,66 @@ function duplicateEncode(word) {
 // https://www.codewars.com/kata/54b42f9314d9229fd6000d9c/solutions/javascript
 // duplicateEncode(" ( ( )");
 
+// create a function that will return true if the walk the app gives you will take you exactly ten minutes and will return you to your starting point. 
+function isValidWalk(walk) {
+    console.log(walk);
+    let walkObj = {
+        n:{
+            range:0,
+            time:0
+        },
+        s:{
+            range:0,
+            time:0
+        },
+        w:{
+            range:0,
+            time:0
+        },
+        e:{
+            range:0,
+            time:0
+        }
+    }
+    for (let i = 0; i < walk.length; i++) {
+        switch(walk[i]) {
+            case 'n' :
+                walkObj.n.range+=1;
+                walkObj.n.time+=1;
+                break;
+            case 's' :
+                walkObj.s.range+=1;
+                walkObj.s.time+=1;
+                break;
+            case 'w' :
+                walkObj.w.range+=1;
+                walkObj.w.time+=1;
+                break;
+            case 'e' :
+                walkObj.e.range+=1;
+                walkObj.e.time+=1;
+                break;
+        }
+    }
+    console.log(walkObj.n.range, walkObj.s.range, walkObj.w.range, walkObj.e.range, walkObj.n.time, walkObj.s.time, walkObj.w.time, walkObj.e.time)
+    if ((walkObj.n.range - walkObj.s.range == 0) && (walkObj.w.range - walkObj.e.range == 0) && (walkObj.w.range - walkObj.e.range == 0) && walkObj.n.time + walkObj.s.time + walkObj.w.time + walkObj.e.time == 10) {
+        console.log(true);
+        return true;
+    }
+    else {
+        console.log(false);
+        return false;
+    }
+}
+// var res = { n: 0, w: 0, s: 0, e: 0 };
+// walk.forEach((c) => res[c]++);
+// return walk.length === 10 && res.n == res.s && res.e == res.w;
+// ================
+// return walk.length == 10 && !walk.reduce(function(w,step){ return w + {"n":-1,"s":1,"e":99,"w":-99}[step]},0)
+// ================
+// function count(c) { return walk.filter(function (v) { return v == c }).length }
+// return walk.length == 10 && count('w') == count('e') && count('n') == count('s')
+// ================
+
+// isValidWalk(['e', 'w', 'e', 'w', 'n', 's', 'n', 's','e', 'w']);
+
