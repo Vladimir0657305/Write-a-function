@@ -342,3 +342,37 @@ function toCamelCase(str) {
 // ===================
 // return str.replace(/[_-]\w/gi, ch => ch[1].toUpperCase());
 // toCamelCase("the_stealth-warrior");
+
+// Implement the function unique_in_order which takes as argument a sequence and returns a list of items without any elements with the same value next to each other
+var uniqueInOrder = function (iterable) {
+    console.log(iterable);
+    let out = [];
+    let prev = '';
+    let arr = [];
+    if (typeof iterable == "string"){
+        arr = iterable.split('');
+    }
+    else {
+        arr = iterable;
+    }    
+    prev = arr[0];
+    for (let i = 0; i < arr.length; i++){
+        if (arr[i] != prev) out.push(prev);
+        prev = arr[i];
+        if (i == arr.length-1) out.push(prev);
+    }
+    console.log(out);
+    return(out);
+}
+// return [...iterable].filter((a, i) => a !== iterable[i-1])
+// =====================
+// https://www.codewars.com/kata/54e6533c92449cc251001667/solutions/javascript
+// =====================
+// return [].filter.call(iterable, (function (a, i) { return iterable[i - 1] !== a }));
+// =====================
+// const uniqueInOrder = d => [...d].filter((x, i, a) => x != a[i + 1])
+// =====================
+// return Array.prototype.filter.call(iterable, function(current, index){ return iterable[index - 1] !== current})
+// =====================
+// return Array.prototype.reduce.call(iterable, function(a,b) { if (a[a.length-1] !== b) a.push(b); return a; }, []);
+// uniqueInOrder("ABBCcAD");
