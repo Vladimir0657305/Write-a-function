@@ -187,3 +187,34 @@ function duplicateCount(text) {
 
 // duplicateCount("Indivisibilities");
 
+// is to convert a string to a new string
+function duplicateEncode(word) {
+    console.log(word);
+    let obj = {};
+    let arr = word.split('').map(elem => elem.toLowerCase());
+    arr.map(elem => {obj[elem] ? obj[elem] += 1 : obj[elem] = 1;})
+    // arr.map(elem => { obj[elem] > 1 ? arr.splice(arr.indexOf(elem), 1, ")") : arr.splice(arr.indexOf(elem), 1, "(") })
+    for (let i = 0; i < arr.length; i++) {
+        if (obj[arr[i]] > 1) {
+            arr.splice(i,1,")");
+        }
+        else {
+            arr.splice(i, 1, "(");
+        }
+    }
+    console.log(arr.join(''));
+    return (arr.join(''));
+}
+// return word
+//     .toLowerCase()
+//     .split('')
+//     .map(function (a, i, w) {
+//         return w.indexOf(a) == w.lastIndexOf(a) ? '(' : ')'
+//     })
+//     .join('');
+// =================================
+// const duplicateEncode = w => w.replace(/./g, c => (new RegExp(`([${c}]).*\\1`, 'gi')).test(w) ? ')' : '(');
+// =================================
+// https://www.codewars.com/kata/54b42f9314d9229fd6000d9c/solutions/javascript
+// duplicateEncode(" ( ( )");
+
