@@ -308,3 +308,37 @@ function order(words) {
     return (outputWords.join(' '));
 }
 // order("4of Fo1r pe6ople g3ood th5e the2");
+
+// Complete the method/function so that it converts dash/underscore delimited words into camel casing.
+function toCamelCase(str) {
+    if (!str) return('');
+    console.log(str);
+    let out = '';
+    let output = [];
+    let prev = 0;
+    out = str.split('')
+    console.log(out);
+    for (let i = 0; i < out.length; i++){
+        if (out[i] == "_" || out[i] == "-"){
+            output.push(out.slice(prev,i).join(''))
+            prev=i+1;
+        }
+        else {
+            if (i == out.length - 1) {
+                output.push(out.slice(prev, i+1).join(''))
+            }
+        }
+    }
+    console.log(output);
+    
+    out = output.map(elem => ( elem.charAt(0).toUpperCase() + elem.slice(1) ) );
+    out[0] = output[0];
+    console.log(out.join(''));
+    return (out.join(''));
+}
+// return str.replace(/[-_](.)/g, (_, c) => c.toUpperCase());
+// ===================
+// return str.split(/-|_/g).map((w, i) => (i > 0 ? w.charAt(0).toUpperCase() : w.charAt(0)) + w.slice(1)).join('');
+// ===================
+// return str.replace(/[_-]\w/gi, ch => ch[1].toUpperCase());
+// toCamelCase("the_stealth-warrior");
