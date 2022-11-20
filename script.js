@@ -427,3 +427,39 @@ function sortArray(array) {
 // ===========================
 // sortArray([1, 111, 11, 11, 2, 1, 5, 0]);
 
+// Given an array (arr) as an argument complete the function countSmileys that should return the total number of smiling faces.
+// https://www.codewars.com/kata/583203e6eb35d7980400002a/train/javascript
+function countSmileys(arr) {
+    console.log(arr);
+    let count = 0;
+    let valid = [":)", ":D", ";-D", ":~)"]
+    for (let index = 0; index < arr.length; index++) {
+        if (arr[index].length == 2){
+            if (arr[index][0] == ":" || arr[index][0] == ";"){
+                if (arr[index][1] == ")" || arr[index][1] == "D"){
+                    count++
+                }
+            }
+        }
+        else if (arr[index].length == 3) {
+            if (arr[index][0] == ":" || arr[index][0] == ";") {
+                if (arr[index][1] == "-" || arr[index][1] == "~") {
+                    if (arr[index][2] == ")" || arr[index][2] == "D") {
+                        count++
+                    }
+                }
+                
+            }
+        }
+        
+    }
+    console.log(count);
+    return(count);
+}
+// return arr.filter(x => /^[:;][-~]?[)D]$/.test(x)).length;
+// ==========================
+// const countSmileys = ss => ss.reduce((a, s) => a + /^[:;][-~]?[D)]$/.test(s), 0);
+// ==========================
+// countSmileys=arr=> arr.filter(v => /(:|;)(-|~)?(\)|D)/.test(v)).length; 
+// ==========================
+// countSmileys([';D', ':-(', ':-)', ';~)']);
