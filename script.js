@@ -299,3 +299,12 @@ function persistence(num) {
 // ================
 
 // persistence(999);
+
+// to sort a given string. Each word in the string will contain a single number. This number is the position the word should have in the result.
+function order(words) {
+    let outputWords = [];
+    words.split(' ').forEach(elem => { elem.split('').forEach(item => parseInt(item) ? outputWords[parseInt(item)-1] = elem : false ) });
+    console.log(outputWords.join(' '));
+    return (outputWords.join(' '));
+}
+// order("4of Fo1r pe6ople g3ood th5e the2");
