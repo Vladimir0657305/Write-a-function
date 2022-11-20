@@ -281,3 +281,21 @@ function isValidWalk(walk) {
 
 // isValidWalk(['e', 'w', 'e', 'w', 'n', 's', 'n', 's','e', 'w']);
 
+// Write a function, persistence, that takes in a positive parameter num and returns its multiplicative persistence, which is the number of times you must multiply the digits in num until you reach a single digit.
+function persistence(num) {
+    console.log(num);
+    if (num < 10) return 0;
+    let count = 0;
+    let n = num.toString().split('');
+    while (n.length > 1) {
+        let mult = n.reduce((prev, cur) => +prev * +cur);
+        n = mult.toString().split('');
+        count++;
+    }
+    console.log(count);
+    return count;
+}
+// persistence=(n,c)=>n>9?persistence(n.toString().split('').reduce((x,y)=>x*y),c?(c+1):1):c?c:0
+// ================
+
+// persistence(999);
