@@ -376,3 +376,23 @@ var uniqueInOrder = function (iterable) {
 // =====================
 // return Array.prototype.reduce.call(iterable, function(a,b) { if (a[a.length-1] !== b) a.push(b); return a; }, []);
 // uniqueInOrder("ABBCcAD");
+
+//  it splits the string into pairs of two characters.
+// https://www.codewars.com/kata/515de9ae9dcfc28eb6000001/train/javascript
+function solution(str) {
+    console.log([...str]);
+    let arr = [];
+    let out = [];
+    arr = [...str];
+    for (let i = 0; i < arr.length; i+=2){
+        out.push(arr[i] + (arr[i + 1] ? arr[i + 1] : "_") )
+    }
+    console.log(out);
+    return(out);
+}
+// return (s+"_").match(/.{2}/g)||[]
+// ====================
+// const solution = str => ((str+"_").match(/../g)||[]);
+// return str.split("").map((e,i) => i % 2 === 0 ? e + (str[i+1] || "_") : false).filter(e => e)
+// ====================
+// solution("abcdefg");
