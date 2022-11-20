@@ -396,3 +396,34 @@ function solution(str) {
 // return str.split("").map((e,i) => i % 2 === 0 ? e + (str[i+1] || "_") : false).filter(e => e)
 // ====================
 // solution("abcdefg");
+
+// sort the odd numbers in ascending order while leaving the even numbers at their original positions.
+https://www.codewars.com/kata/578aa45ee9fd15ff4600090d/train/javascript
+function sortArray(array) {
+    console.log(array);
+    let outNum = [];
+    let outInd = [];
+    array.forEach(elem =>  (elem%2!=0) ? outNum.push(elem) : elem );
+    array.forEach((elem, ind) =>  (elem%2!=0) ? outInd.push(ind) : elem );
+    outNum.sort((a,b) => a-b).map((elem, ind) => array[outInd[ind]] = elem);
+    // let arr = outNum.map( (elem, ind) => array[outInd[ind]]= elem );
+    console.log(array);
+    console.log(outNum);
+    console.log(outInd);   
+    return(array);
+
+    // for (let index = 0; index < outNum.length; index++) {
+    //     array[outInd[index]] = outNum[index];
+    // }
+    // console.log(array);
+}
+// var odd = array.filter(elem => elem % 2 !== 0).sort((a, b) => a - b);
+// return array.map(elem => elem % 2 === 0 ? elem : odd.shift());
+// ===========================
+// const odds = array.filter(n => n & 1).sort((a, b) => a - b);
+// return array.map(n => n & 1 ? odds.shift() : n);
+// ===========================
+// sortArray=(a,b=a.filter(a=>a%2).sort((a,b)=>a-b))=>a.map(a=>a%2?b.shift():a)
+// ===========================
+// sortArray([1, 111, 11, 11, 2, 1, 5, 0]);
+
