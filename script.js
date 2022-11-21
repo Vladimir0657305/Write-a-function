@@ -556,17 +556,40 @@ function sumDigPow(a, b) {
         x = i.toString();
         y = 0;
         for (let j = 1; j <= i.toString().length; j++) {
-            y += x[j-1]**j;
+            y += x[j - 1] ** j;
             // console.log(i, j, x, y);
         }
         if (y == i) out.push(i);
     }
     console.log(out);
-    return(out);
+    return (out);
 }
 // return Array(b-a+1).fill().map(() => a++).filter(val => val.toString().split('').map(x => parseInt(x)).reduce((total, v, i) => total + v ** (i+1)) == val);
 // ==========================
 // return [...Array(b - a + 1)].map((_, i) => i + a).filter(x => (x + "").split("").map((y, i) => Math.pow(+y, i + 1)).reduce((m, n) => m + n) == x);
 // ==========================
 // sumDigPow(10, 1400);
+
+// is to count all the occurring characters in a string. If you have a string like aba, then the result should be {'a': 2, 'b': 1}.
+// частота встречающихся букв
+//   return string.split('').reduce(function(o,v){ o[v] ? o[v]++ : (o[v] = 1); return o; }, {});
+// https://www.codewars.com/kata/52efefcbcdf57161d4000091/train/javascript
+function count(string) {
+    string = string.toLowerCase();
+    console.log(string);
+    let out = {};
+    string.split('').map(elem => out[elem] ? out[elem] += 1 : out[elem] = 1);
+    console.log(out);
+    return (out);
+}
+// [...string].reduce((pre, val) => (pre[val] = -~pre[val], pre), {});
+// =======================
+// r = {};
+// string.split('').forEach(c => r[c] = (r[c] || 0) + 1);
+// return r;
+// =======================
+//   return string.split('').reduce(function(o,v){ o[v] ? o[v]++ : (o[v] = 1); return o; }, {});
+// ======================
+//    return (m = {}, str.split('').forEach((c) => m[c] = (m[c] || 0) + 1), m);
+// count("strings");
 
