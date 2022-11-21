@@ -544,3 +544,29 @@ function solution(string) {
 // =========================
 // solution("camelCasingTest");
 
+// In effect: 89 = 8^1 + 9^2
+// See this property again: 135 = 1^1 + 3^2 + 5^3
+// https://www.codewars.com/kata/5626b561280a42ecc50000d1
+function sumDigPow(a, b) {
+    console.log(a, b);
+    let x = '';
+    let y = '';
+    let out = [];
+    for (let i = a; i <= b; i++) {
+        x = i.toString();
+        y = 0;
+        for (let j = 1; j <= i.toString().length; j++) {
+            y += x[j-1]**j;
+            // console.log(i, j, x, y);
+        }
+        if (y == i) out.push(i);
+    }
+    console.log(out);
+    return(out);
+}
+// return Array(b-a+1).fill().map(() => a++).filter(val => val.toString().split('').map(x => parseInt(x)).reduce((total, v, i) => total + v ** (i+1)) == val);
+// ==========================
+// return [...Array(b - a + 1)].map((_, i) => i + a).filter(x => (x + "").split("").map((y, i) => Math.pow(+y, i + 1)).reduce((m, n) => m + n) == x);
+// ==========================
+// sumDigPow(10, 1400);
+
