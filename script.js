@@ -460,6 +460,29 @@ function countSmileys(arr) {
 // ==========================
 // const countSmileys = ss => ss.reduce((a, s) => a + /^[:;][-~]?[D)]$/.test(s), 0);
 // ==========================
-// countSmileys=arr=> arr.filter(v => /(:|;)(-|~)?(\)|D)/.test(v)).length; 
+// countSmileys=arr=> arr.filter(v => /(:|;)(-|~)?(\)|D)/.test(v)).length;
 // ==========================
 // countSmileys([';D', ':-(', ':-)', ';~)']);
+
+// our task is to return the first longest string consisting of k consecutive strings taken in the array.
+// https://www.codewars.com/kata/56a5d994ac971f1ac500003e/solutions/javascript
+function longestConsec(strarr, k) {
+    console.log(strarr);
+    if (strarr == [] || k <= 0 || k > strarr.length) return('');
+    let count = strarr[0];
+    for (let i = 0; i < strarr.length; i++) {
+        let temp = '';
+        for (let j = i; j < i + k; j++) {
+            if (i+k <= strarr.length) {temp+= strarr[j];}
+            if (temp.length > count.length) count = temp;
+        }
+    }
+    console.log(count);
+    return(count);
+}
+// return (a.length == 0 || k > a.length || k < 1) ? '' : a.reduce(function (s, c, i) {
+//     return i + k > a.length || s.length >= a.slice(i, i + k).join('').length ? s : a.slice(i, i + k).join('');
+// }, '');
+// ==========================
+// longestConsec(["zone", "abigail", "theta", "form", "libe", "zas"], 2);
+
