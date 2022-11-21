@@ -16,7 +16,7 @@ function spinWords(str) {
     else {
         if (arr[0].split('').length >= 5) {
             console.log(arr[0].split('').reverse().join(''));
-            return(arr[0].split('').reverse().join(''));
+            return (arr[0].split('').reverse().join(''));
         }
         else {
             console.log(arr[0]);
@@ -39,7 +39,7 @@ function digitalRoot(n) {
     // console.log(num);
 
     if (num.length > 1) {
-        
+
         while (num.length > 1) {
             let sum = 0;
             for (let i = 0; i < num.length; i++) {
@@ -71,20 +71,20 @@ function digitalRoot(n) {
 
 // function which takes an array containing the names of people that like an item.
 function likes(names) {
-    switch(names.length) {
-        case 0 :
+    switch (names.length) {
+        case 0:
             console.log("no one likes this");
             return ("no one likes this");
-        case 1 :
+        case 1:
             console.log(`"${names[0]} likes this"`);
             return (`"${names[0]} likes this"`);
-        case 2 :
+        case 2:
             console.log(`"${names[0]} and ${names[1]} like this"`);
             return (`"${names[0]} and ${names[1]} like this"`);
-        case 3 :
+        case 3:
             console.log(`"${names[0]}, ${names[1]} and ${names[2]} like this"`);
             return (`"${names[0]}, ${names[1]} and ${names[2]} like this"`);
-        default :
+        default:
             console.log(`"${names[0]}, ${names[1]} and ${names.length - 2} others like this"`);
             return (`"${names[0]}, ${names[1]} and ${names.length - 2} others like this"`);
     }
@@ -105,7 +105,7 @@ function findOutlier(integers) {
     let countOdd = 0;
     let countEven = 0;
     for (let i = 0; i < 3; i++) {
-        if (Math.abs(integers[i]) %2 == 0) {
+        if (Math.abs(integers[i]) % 2 == 0) {
             countEven++;
         }
         else {
@@ -167,19 +167,19 @@ function duplicateCount(text) {
         for (let k = i; k < letters.length; k++) {
             console.log(arr[letters[i].toLowerCase()])
             if (letters[i].toLowerCase() == letters[k].toLowerCase()) {
-                if (!arr[letters[i].toLowerCase()]) { 
-                    arr[letters[i].toLowerCase()]= 1;
+                if (!arr[letters[i].toLowerCase()]) {
+                    arr[letters[i].toLowerCase()] = 1;
                 }
                 else {
-                    arr[letters[i].toLowerCase()]= 2;
-                } 
+                    arr[letters[i].toLowerCase()] = 2;
+                }
             }
         }
     }
     let count = 0;
-    Object.values(arr).forEach(elem => {elem == 2 ? count++ : false});
+    Object.values(arr).forEach(elem => { elem == 2 ? count++ : false });
     console.log(count);
-    return(count);
+    return (count);
 }
 // return (text.toLowerCase().split('').sort().join('').match(/([^])\1+/g) || []).length;
 // ==============================
@@ -192,11 +192,11 @@ function duplicateEncode(word) {
     console.log(word);
     let obj = {};
     let arr = word.split('').map(elem => elem.toLowerCase());
-    arr.map(elem => {obj[elem] ? obj[elem] += 1 : obj[elem] = 1;})
+    arr.map(elem => { obj[elem] ? obj[elem] += 1 : obj[elem] = 1; })
     // arr.map(elem => { obj[elem] > 1 ? arr.splice(arr.indexOf(elem), 1, ")") : arr.splice(arr.indexOf(elem), 1, "(") })
     for (let i = 0; i < arr.length; i++) {
         if (obj[arr[i]] > 1) {
-            arr.splice(i,1,")");
+            arr.splice(i, 1, ")");
         }
         else {
             arr.splice(i, 1, "(");
@@ -222,40 +222,40 @@ function duplicateEncode(word) {
 function isValidWalk(walk) {
     console.log(walk);
     let walkObj = {
-        n:{
-            range:0,
-            time:0
+        n: {
+            range: 0,
+            time: 0
         },
-        s:{
-            range:0,
-            time:0
+        s: {
+            range: 0,
+            time: 0
         },
-        w:{
-            range:0,
-            time:0
+        w: {
+            range: 0,
+            time: 0
         },
-        e:{
-            range:0,
-            time:0
+        e: {
+            range: 0,
+            time: 0
         }
     }
     for (let i = 0; i < walk.length; i++) {
-        switch(walk[i]) {
-            case 'n' :
-                walkObj.n.range+=1;
-                walkObj.n.time+=1;
+        switch (walk[i]) {
+            case 'n':
+                walkObj.n.range += 1;
+                walkObj.n.time += 1;
                 break;
-            case 's' :
-                walkObj.s.range+=1;
-                walkObj.s.time+=1;
+            case 's':
+                walkObj.s.range += 1;
+                walkObj.s.time += 1;
                 break;
-            case 'w' :
-                walkObj.w.range+=1;
-                walkObj.w.time+=1;
+            case 'w':
+                walkObj.w.range += 1;
+                walkObj.w.time += 1;
                 break;
-            case 'e' :
-                walkObj.e.range+=1;
-                walkObj.e.time+=1;
+            case 'e':
+                walkObj.e.range += 1;
+                walkObj.e.time += 1;
                 break;
         }
     }
@@ -303,7 +303,7 @@ function persistence(num) {
 // to sort a given string. Each word in the string will contain a single number. This number is the position the word should have in the result.
 function order(words) {
     let outputWords = [];
-    words.split(' ').forEach(elem => { elem.split('').forEach(item => parseInt(item) ? outputWords[parseInt(item)-1] = elem : false ) });
+    words.split(' ').forEach(elem => { elem.split('').forEach(item => parseInt(item) ? outputWords[parseInt(item) - 1] = elem : false) });
     console.log(outputWords.join(' '));
     return (outputWords.join(' '));
 }
@@ -311,27 +311,27 @@ function order(words) {
 
 // Complete the method/function so that it converts dash/underscore delimited words into camel casing.
 function toCamelCase(str) {
-    if (!str) return('');
+    if (!str) return ('');
     console.log(str);
     let out = '';
     let output = [];
     let prev = 0;
     out = str.split('')
     console.log(out);
-    for (let i = 0; i < out.length; i++){
-        if (out[i] == "_" || out[i] == "-"){
-            output.push(out.slice(prev,i).join(''))
-            prev=i+1;
+    for (let i = 0; i < out.length; i++) {
+        if (out[i] == "_" || out[i] == "-") {
+            output.push(out.slice(prev, i).join(''))
+            prev = i + 1;
         }
         else {
             if (i == out.length - 1) {
-                output.push(out.slice(prev, i+1).join(''))
+                output.push(out.slice(prev, i + 1).join(''))
             }
         }
     }
     console.log(output);
-    
-    out = output.map(elem => ( elem.charAt(0).toUpperCase() + elem.slice(1) ) );
+
+    out = output.map(elem => (elem.charAt(0).toUpperCase() + elem.slice(1)));
     out[0] = output[0];
     console.log(out.join(''));
     return (out.join(''));
@@ -349,20 +349,20 @@ var uniqueInOrder = function (iterable) {
     let out = [];
     let prev = '';
     let arr = [];
-    if (typeof iterable == "string"){
+    if (typeof iterable == "string") {
         arr = iterable.split('');
     }
     else {
         arr = iterable;
-    }    
+    }
     prev = arr[0];
-    for (let i = 0; i < arr.length; i++){
+    for (let i = 0; i < arr.length; i++) {
         if (arr[i] != prev) out.push(prev);
         prev = arr[i];
-        if (i == arr.length-1) out.push(prev);
+        if (i == arr.length - 1) out.push(prev);
     }
     console.log(out);
-    return(out);
+    return (out);
 }
 // return [...iterable].filter((a, i) => a !== iterable[i-1])
 // =====================
@@ -384,11 +384,11 @@ function solution(str) {
     let arr = [];
     let out = [];
     arr = [...str];
-    for (let i = 0; i < arr.length; i+=2){
-        out.push(arr[i] + (arr[i + 1] ? arr[i + 1] : "_") )
+    for (let i = 0; i < arr.length; i += 2) {
+        out.push(arr[i] + (arr[i + 1] ? arr[i + 1] : "_"))
     }
     console.log(out);
-    return(out);
+    return (out);
 }
 // return (s+"_").match(/.{2}/g)||[]
 // ====================
@@ -403,14 +403,14 @@ function sortArray(array) {
     console.log(array);
     let outNum = [];
     let outInd = [];
-    array.forEach(elem =>  (elem%2!=0) ? outNum.push(elem) : elem );
-    array.forEach((elem, ind) =>  (elem%2!=0) ? outInd.push(ind) : elem );
-    outNum.sort((a,b) => a-b).map((elem, ind) => array[outInd[ind]] = elem);
+    array.forEach(elem => (elem % 2 != 0) ? outNum.push(elem) : elem);
+    array.forEach((elem, ind) => (elem % 2 != 0) ? outInd.push(ind) : elem);
+    outNum.sort((a, b) => a - b).map((elem, ind) => array[outInd[ind]] = elem);
     // let arr = outNum.map( (elem, ind) => array[outInd[ind]]= elem );
     console.log(array);
     console.log(outNum);
-    console.log(outInd);   
-    return(array);
+    console.log(outInd);
+    return (array);
 
     // for (let index = 0; index < outNum.length; index++) {
     //     array[outInd[index]] = outNum[index];
@@ -434,9 +434,9 @@ function countSmileys(arr) {
     let count = 0;
     let valid = [":)", ":D", ";-D", ":~)"]
     for (let index = 0; index < arr.length; index++) {
-        if (arr[index].length == 2){
-            if (arr[index][0] == ":" || arr[index][0] == ";"){
-                if (arr[index][1] == ")" || arr[index][1] == "D"){
+        if (arr[index].length == 2) {
+            if (arr[index][0] == ":" || arr[index][0] == ";") {
+                if (arr[index][1] == ")" || arr[index][1] == "D") {
                     count++
                 }
             }
@@ -448,13 +448,13 @@ function countSmileys(arr) {
                         count++
                     }
                 }
-                
+
             }
         }
-        
+
     }
     console.log(count);
-    return(count);
+    return (count);
 }
 // return arr.filter(x => /^[:;][-~]?[)D]$/.test(x)).length;
 // ==========================
@@ -468,17 +468,17 @@ function countSmileys(arr) {
 // https://www.codewars.com/kata/56a5d994ac971f1ac500003e/solutions/javascript
 function longestConsec(strarr, k) {
     console.log(strarr);
-    if (strarr == [] || k <= 0 || k > strarr.length) return('');
+    if (strarr == [] || k <= 0 || k > strarr.length) return ('');
     let count = strarr[0];
     for (let i = 0; i < strarr.length; i++) {
         let temp = '';
         for (let j = i; j < i + k; j++) {
-            if (i+k <= strarr.length) {temp+= strarr[j];}
+            if (i + k <= strarr.length) { temp += strarr[j]; }
             if (temp.length > count.length) count = temp;
         }
     }
     console.log(count);
-    return(count);
+    return (count);
 }
 // return (a.length == 0 || k > a.length || k < 1) ? '' : a.reduce(function (s, c, i) {
 //     return i + k > a.length || s.length >= a.slice(i, i + k).join('').length ? s : a.slice(i, i + k).join('');
@@ -486,3 +486,50 @@ function longestConsec(strarr, k) {
 // ==========================
 // longestConsec(["zone", "abigail", "theta", "form", "libe", "zas"], 2);
 
+// You will be given a number and you will need to return it as a string in Expanded Form.
+// https://www.codewars.com/kata/5842df8ccbd22792a4000245
+function expandedForm(num) {
+    console.log(num);
+    let out = [];
+    let temp = '';
+    for (let i = 1; i <= num.toString().length; i++) {
+        temp = (num / 10 ** i) % 1 * 10 ** i;
+        out.push(Math.round(temp).toString());
+        fractional = num - Math.round(temp);
+        num = fractional;
+    }
+    out.reverse()
+    var arr = out.reduce(function (acc, item) {
+        if (item != 0) acc += " + " + item;
+        return (acc)
+    })
+    console.log(`"${arr}"`);
+    return (`"${arr}"`);
+}
+// const expandedForm = n => n.toString()
+//     .split("")
+//     .reverse()
+//     .map((a, i) => a * Math.pow(10, i))
+//     .filter(a => a > 0)
+//     .reverse()
+//     .join(" + ");
+// ===============================
+// return String(num)
+//     .split("")
+//     .map((num, index, arr) => num + "0".repeat(arr.length - index - 1))
+//     .filter((num) => Number(num) != 0)
+//     .join(" + ")
+// ===============================
+// if (num < 10) return `${num}`;
+// let over = num % (Math.pow(10, (num.toString().length - 1)));
+// if (!over) return `${num}`;
+// return `${num - over} + ${expandedForm(over)}`;
+// ===============================
+// expandedForm = n => [...String(n)].reverse().map((x,i) => x == '0' ? '' : x + '0'.repeat(i)).filter(x => x != '').reverse().join(' + ')
+// ===============================
+// const expandedForm = n => ("" + n).split("").map((d, i, a) => d + "0".repeat(a.length - i - 1)).filter(m => +m).join(" + ");
+// ===============================
+// [...`${num}`].reverse().map((val, idx) => val * 10 ** idx).reverse().filter(Boolean).join(` + `);
+// ===============================
+
+// expandedForm(54027059);
