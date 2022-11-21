@@ -593,3 +593,51 @@ function count(string) {
 //    return (m = {}, str.split('').forEach((c) => m[c] = (m[c] || 0) + 1), m);
 // count("strings");
 
+// Write simple .camelCase method "camel case word".camelCase() => CamelCaseWord
+// https://www.codewars.com/kata/587731fda577b3d1b0001196
+const underscoreRegex = /(?:[^\w\s]|_)+/g,
+    sandwichNumberRegex = /(\d)\s+(?=\d)/g,
+    camelCaseRegex = /(?:^\s*\w|\b\w|\W+)/g;
+String.prototype.camelCase = function (string) {
+    // https://stackoverflow.com/questions/2970525/converting-any-string-into-camel-case
+    // return(string.split('').map((val, ind) => val.charAt(0) == val.charAt(0).toUpperCase() ? val = " " + val : val).join(''));
+    // ==============
+    // return (" " + string).toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g, function (match, chr) {
+    //     return chr.toUpperCase();
+    // });
+    // ==============
+    // return string
+    //     .replace(/\s(.)/g, function ($1) { return $1.toUpperCase(); })
+    //     .replace(/\s/g, '')
+    //     .replace(/^(.)/, function ($1) { return $1.toLowerCase(); });
+    // ==============
+    // const a = string.toLowerCase()
+    //     .replace(/[-_\s.]+(.)?/g, (_, c) => c ? c.toUpperCase() : '');
+    // return a.substring(0, 1).toLowerCase() + a.substring(1);
+    // ==============
+    // string.toLowerCase().trim().split(/[.\-_\s]/g).reduce((string, word) => string + word[0].toUpperCase() + word.slice(1));
+    // ==============
+    // return string.toLowerCase().replace(/(?:(^.)|(\s+.))/g, function (match) {
+    //     return match.charAt(match.length - 1).toUpperCase();
+    // });
+    // ==============
+    if (/^\s*_[\s_]*$/g.test(this)) {
+        return '_';
+    }
+    return this.replace(underscoreRegex, ' ')
+        .replace(sandwichNumberRegex, '$1_')
+        .replace(camelCaseRegex, function (match, index) {
+            if (/^\W+$/.test(match)) {
+                return '';
+            }
+
+            return index == 0 ? match.trimLeft().toLowerCase() : match.toUpperCase();
+        });
+    // ================
+
+    // return this.replace(/^([A-Z])|\s(\w)/g, function (match, p1, p2, offset) {
+    //     if (p2) return p2.toUpperCase();
+    //     return p1.toLowerCase();
+    // });
+}
+console.log("camel case method".camelCase());
