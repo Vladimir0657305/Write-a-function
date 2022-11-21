@@ -533,3 +533,14 @@ function expandedForm(num) {
 // ===============================
 
 // expandedForm(54027059);
+
+// Complete the solution so that the function will break up camel casing, using a space between words.
+// https://www.codewars.com/kata/5208f99aee097e6552000148/train/javascript
+function solution(string) {
+    console.log(string.split('').map((val, ind) => val.charAt(0) == val.charAt(0).toUpperCase() ? val = " " + val : val).join(''))
+    return string.split('').map((val, ind) => val.charAt(0) == val.charAt(0).toUpperCase() ? val = " " + val : val).join('');
+};
+// return(string.replace(/([A-Z])/g, ' $1'));
+// =========================
+// solution("camelCasingTest");
+
