@@ -640,4 +640,32 @@ String.prototype.camelCase = function (string) {
     //     return p1.toLowerCase();
     // });
 }
-console.log("camel case method".camelCase());
+// console.log("camel case method".camelCase());
+
+// There is a queue for the self-checkout tills at the supermarket. Your task is write a function to calculate the total time required for all the customers to check out!
+// https://www.codewars.com/kata/57b06f90e298a7b53d000a86/train/javascript
+function queueTime(customers, n) {
+    console.log(customers.length);
+    if (customers.length == 0 && customers[0] == undefined) {
+        console.log('0');
+        return(0);
+    }
+    
+    var checkoutTills = {};
+    // var compare = [];
+    
+    customers.forEach((elem, index) => index < n ? checkoutTills[index] = elem : '');
+    customers.slice(n).forEach(elem => checkoutTills[Object.values(checkoutTills).indexOf(Math.min(...Object.values(checkoutTills)))] += elem);
+    // compare = Object.values(checkoutTills);
+    
+    // console.log(Object.values(checkoutTills).indexOf(Math.min(...Object.values(checkoutTills))));
+
+    // for (let i = n ; i < customers.length; i++ ) {
+    //     checkoutTills[Object.values(checkoutTills).indexOf(Math.min(...Object.values(checkoutTills)))] += customers[i];
+    // }
+    console.log(Math.max(...Object.values(checkoutTills)));
+    return (Math.max(...Object.values(checkoutTills)));
+}
+
+// queueTime([10, 2, 3, 8, 7, 2, 5, 3, 10, 12, 3], 3);
+queueTime([], 1);
