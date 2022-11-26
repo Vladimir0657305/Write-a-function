@@ -692,3 +692,33 @@ function partsSums(ls) {
 // ===================
 // partsSums([0, 1, 3, 6, 10]);
 
+// make a program that gives it sorted in alphabetical order by last name.
+function meeting(s) {
+    // console.log(s);
+    // s = s.toUpperCase();
+    let out = '';
+    let temp = s.toUpperCase().split(';').map(e => e.split(':'));
+    // console.log(temp);
+
+    temp.forEach( e => { 
+    // console.log(e[0], e[1]);
+        [e[0], e[1]] = [e[1], e[0]];
+    // console.log(e[0], e[1]);
+    }  ) ;
+    // console.log(temp);
+
+    temp.sort(function (a, b) {
+        if (a < b) {
+            return -1
+        }
+    });
+    temp.forEach( e => out += "("+e[0]+","+e[1]+")")
+    console.log(out);
+    return (out);
+}
+// return s.split(';').map(i => i.toUpperCase().split(':').reverse().join(', ')).sort().map(i => '(' + i + ')').join('')
+// ==========================
+// return s = s.toUpperCase().split(';').map(name => name.split(':')).map(name => name.reverse()).sort().reduce((acc, name) => acc + `(${name[0]}, ${name[1]})`, '')
+// ==========================
+// meeting("Alexis:Wahl;John:Bell;Victoria:Schwarz;Abba:Dorny;Grace:Meta;Ann:Arno;Madison:STAN;Alex:Cornwell;Lewis:Kern;Megan:Stan;Alex:Korn");
+
