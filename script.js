@@ -648,16 +648,16 @@ function queueTime(customers, n) {
     console.log(customers.length);
     if (customers.length == 0 && customers[0] == undefined) {
         console.log('0');
-        return(0);
+        return (0);
     }
-    
+
     var checkoutTills = {};
     // var compare = [];
-    
+
     customers.forEach((elem, index) => index < n ? checkoutTills[index] = elem : '');
     customers.slice(n).forEach(elem => checkoutTills[Object.values(checkoutTills).indexOf(Math.min(...Object.values(checkoutTills)))] += elem);
     // compare = Object.values(checkoutTills);
-    
+
     // console.log(Object.values(checkoutTills).indexOf(Math.min(...Object.values(checkoutTills))));
 
     // for (let i = n ; i < customers.length; i++ ) {
@@ -667,5 +667,28 @@ function queueTime(customers, n) {
     return (Math.max(...Object.values(checkoutTills)));
 }
 
+// return Math.max(...(customers.reduce((prev, next) => {
+// prev[prev.indexOf(Math.min(...prev))] += next;
+// return prev;
+//   }, Array(n).fill(0))));
+// ============================
+// return Math.max(...customers.reduce((acc, c) => { let i = acc.indexOf(Math.min(...acc)); acc[i] = acc[i] + c; return acc; }, Array(n).fill(0)))
+// ============================
 // queueTime([10, 2, 3, 8, 7, 2, 5, 3, 10, 12, 3], 3);
-queueTime([], 1);
+
+// The corresponding sums are (put together in a list).
+function partsSums(ls) {
+    console.log(ls);
+    if (ls.length == 0 ) return([0]);
+    let out = [];
+    let sum = ls.reduce((acc, next) => acc + next);
+    out.push(sum);
+    // ls.forEach((_, i) => out.push(ls.slice(i).length == 0 ? 0 : ls.slice(i).reduce((acc, next) => acc + next) ));
+    ls.forEach((_, i) => out.push(sum -= ls[i]));
+    console.log(out); 
+    return out;
+}
+// const partsSums = ls => ls.reduceRight((res, el) => (res.push(res[res.length - 1] + el), res), [0]).reverse();
+// ===================
+// partsSums([0, 1, 3, 6, 10]);
+
