@@ -722,3 +722,65 @@ function meeting(s) {
 // ==========================
 // meeting("Alexis:Wahl;John:Bell;Victoria:Schwarz;Abba:Dorny;Grace:Meta;Ann:Arno;Madison:STAN;Alex:Cornwell;Lewis:Kern;Megan:Stan;Alex:Korn");
 
+// Backspaces in string "abc#d##c" ==>  "ac"
+// https://www.codewars.com/kata/5727bb0fe81185ae62000ae3/train/javascript
+function cleanString(s) {
+    console.log(s);
+    let arr = s.split('');
+    if (arr.includes("#")) {
+        for (let i = 0; i < s.length; i++) {
+            if (arr[i] == "#") {
+                for (let j = i - 1; j >= 0; j--) {
+                    if (arr[j] && arr[j] != "#") {
+                        delete arr[j];
+                        delete arr[i];
+                        break;
+                    }
+                }
+            }
+        }
+    }
+    let out = arr.map(elem => elem == "#" ? '' : elem);
+    if (out.join('').length) {
+        return (out.join(''))
+    }
+    else {
+        return ('')
+    }
+}
+// clean_string = s => s.split('').reduce((r, e) => e == '#' ? r.slice(0, -1) : r + e, '');
+// =====================
+// let result = [];
+// [...s].map((char) => (char === "#" ? result.pop() : result.push(char)));
+// return result.join("");
+// =====================
+// cleanString = s => s.includes(`#`) ? cleanString(s.replace(/[^#]?#/, ``)) : s;
+// =====================
+// while (string.indexOf('#') >= 0)
+//     string = string.replace(/(^|[^#])#/g, '');
+// return string;
+// =====================
+// cleanString('abjd####jfk#gfh#jds###d#dsd####dasdaskhj###dhkjs####df##s##d##831####jns###s#cas/*####-5##s##6+yqw87e##hfklsd-=-28##fds##');
+
+// 5kyu
+// Moving Zeros To The End
+// https://www.codewars.com/kata/52597aa56021e91c93000cb0/train/javascript
+function moveZeros(arr) {
+    console.log(arr);
+    let count = [];
+    let out = [];
+    arr.forEach( (elem, i) => elem === 0 ? count.push(0) : out.push(elem) );
+    arr = [...out, ...count];
+    console.log(arr);
+    return(arr);
+}
+// return arr.filter(function (x) { return x !== 0 }).concat(arr.filter(function (x) { return x === 0; }));
+// ======================
+// return [...(arr.filter(n => n !== 0)), ...(arr.filter(n => n === 0))];
+// ======================
+// let moveZeros = (arr) => arr.filter(i => i !== 0).concat(arr.filter(i => i === 0));
+// ======================
+// return arr.sort((a, b) => b === 0 ? -1 : 0);
+// ======================
+// moveZeros(['a', 0, 0, 'b', null, 'c', 'd', 0, 1, false, 0, 1, 0, 3, [], 0, 1, 9, 0, 0, {}, 0, 0, 9]);
+
